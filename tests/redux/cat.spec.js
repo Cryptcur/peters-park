@@ -22,7 +22,7 @@ const fakeCat = {
   favoriteToys: [{ id: 1, name: "laser", rating: 5 }]
 };
 
-describe.only("Redux - Cat", () => {
+describe("Redux - Cat", () => {
   describe("Initial state", () => {
     it("should have an empty object as the initial state", () => {
       const dummyAction = {}; // just a blank obj for the action

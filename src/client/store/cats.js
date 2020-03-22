@@ -10,19 +10,19 @@ const ACTIONS = {
 // INITIAL STATE
 // what would be a good initial state?
 // :thinking:
-const initialState = null;
+const initialState = [];
 
 // ACTION CREATORS
 export const loadCats = data => ({
   // some stuff might go in here? hmmmmm.....
   type: ACTIONS.LOAD_CATS,
-  data
+  cats: data
 });
 
 // THUNK CREATORS
 export const fetchCats = () => async dispatch => {
   // YOUR CODE HERE
-  const cats = (await axios.get("api/cats")).data;
+  const cats = (await axios.get("api/cats/")).data;
   return dispatch(loadCats(cats));
 };
 
@@ -31,8 +31,9 @@ export const fetchCats = () => async dispatch => {
 // don't modify what the function takes
 export default function(state = initialState, action) {
   switch (action.type) {
-    case ACTIONS.LOAD_CATS:
-      return loadCats;
+    case "LOAD_CATS":
+      state = action.cats;
+      return state;
 
     default:
       return state;
